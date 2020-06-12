@@ -73,8 +73,8 @@ class Length(Unit):
 
     def convert(self, output):
         try:
-            meters = self.value * conversiontables.tom[self.name]
-            return meters * conversiontables.fromm[output]
+            metres = self.value * conversiontables.tom[self.name]
+            return float(metres) * conversiontables.fromm[output]
         except KeyError:
             return "Not a supported unit!"
 
@@ -157,11 +157,29 @@ class Feet_Per_Second(Velocity):
         self.symbol = "fps"
         self.name = "feet per second"
 
-mass = Pounds(25)
-velocity = Metres_Per_Second(25)
-length = Furlong(25)
 
-print(mass.convert("ounces"))
-print(velocity.convert("feet per second"))
-print(length.convert("inch"))
+stringtoclass = {"mph":Miles_Per_Hour,
+                 "kmph":Kilometres_Per_Hour,
+                 "m/s":Metres_Per_Second,
+                 "feet per second":Feet_Per_Second,
+                 "ft":Foot,
+                 "in":Inch,
+                 "m":Metres,
+                 "yd":Yard,
+                 "fur":Furlong,
+                 "mi":Mile,
+                 "km":Kilometre,
+                 "lb":Pounds,
+                 "kg":Kilograms,
+                 "oz":Ounce,
+                 "st":Stone,
+                 "Imperial ton":Imperial_Ton,
+                 "US ton":US_Ton}
+# mass = Pounds(25)
+# velocity = Metres_Per_Second(25)
+# length = Furlong(25)
+#
+# print(mass.convert("ounces"))
+# print(velocity.convert("feet per second"))
+# print(length.convert("inch"))
 

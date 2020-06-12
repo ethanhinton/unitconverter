@@ -1,5 +1,6 @@
+
 # Weight conversions
-fromkg = {"pounds":2.20462,
+fromkg = {"Pounds":2.20462,
           "stone":0.157473,
           "imperial ton":0.000984207,
           "US ton":0.00110231183999997618,
@@ -31,13 +32,16 @@ fromm = {"foot":3.280839895,
          "kilometre": 0.001}
 
 # Velocity Conversions
-
 to_m_per_s = {"miles per hour":1/2.23694,
-              "kilometers per hour":1/3.6,
+              "kilometres per hour":1/3.6,
               "feet per second":1/3.28084,
               "metres per second":1}
 
 from_m_per_s = {"miles per hour":2.23694,
-                "kilometers per hour":3.6,
+                "kilometres per hour":3.6,
                 "feet per second":3.28084,
                 "metres per second":1}
+
+
+#String to Class conversions
+
