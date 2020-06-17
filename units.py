@@ -3,7 +3,7 @@ import conversiontables
 # Unit Class
 class Unit:
     def __init__(self, value):
-        self.value = value
+        self.value = float(value)
 
     def get_value(self):
         return self.value
@@ -13,168 +13,146 @@ class Unit:
 
 #Weight Classes
 class Weight(Unit):
-    def __init__(self, value):
-        super().__init__(value)
-        self.kind = "Weight"
+    KIND = "Weight"
+    NAME = None
+    SYMBOL = None
 
     def convert(self, output):
         try:
-            kgs = self.value * conversiontables.tokg[self.name]
+            kgs = self.value * conversiontables.tokg[self.NAME]
             return kgs * conversiontables.fromkg[output]
         except KeyError:
             return "Not a supported unit!"
 
 class Kilograms(Weight):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "kg"
-        self.name = "kilograms"
+    NAME = "Kilograms"
+    SYMBOL = "kg"
 
 
 class Pounds(Weight):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "lb"
-        self.name = "pounds"
+    NAME = "Pounds"
+    SYMBOL = "lb"
 
 
 class Stone(Weight):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "st"
-        self.name = "stone"
+    SYMBOL = "st"
+    NAME = "Stone"
 
 
 class Imperial_Ton(Weight):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "ton"
-        self.name = "imperial ton"
+    SYMBOL = "ton"
+    NAME = "Imperial Tons"
 
 
 class US_Ton(Weight):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "US ton"
-        self.name = "US ton"
+    SYMBOL = "US ton"
+    NAME = "US Tons"
+
 
 
 class Ounce(Weight):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "oz"
-        self.name = "ounce"
+    SYMBOL = "oz"
+    NAME = "Ounces"
 
 #Length Classes
 class Length(Unit):
-    def __init__(self, value):
-        super().__init__(value)
-        self.kind = "Length"
+    KIND = "Length"
+    NAME = None
+    SYMBOL = None
 
     def convert(self, output):
         try:
-            metres = self.value * conversiontables.tom[self.name]
-            return float(metres) * conversiontables.fromm[output]
+            metres = self.value * conversiontables.tom[self.NAME]
+            return metres * conversiontables.fromm[output]
         except KeyError:
             return "Not a supported unit!"
 
 class Metres(Length):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "m"
-        self.name = "metre"
+    SYMBOL = "m"
+    NAME = "Metres"
+
 
 class Foot(Length):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "ft"
-        self.name = "foot"
+    SYMBOL = "ft"
+    NAME = "Feet"
+
 
 class Yard(Length):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "yd"
-        self.name = "yard"
+    SYMBOL = "yd"
+    NAME = "Yards"
+
 
 class Furlong(Length):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "fur"
-        self.name = "furlong"
+    SYMBOL = "fur"
+    NAME = "Furlong"
+
 
 class Inch(Length):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "in"
-        self.name = "inch"
+    SYMBOL = "in"
+    NAME = "Inches"
+
 
 class Mile(Length):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "mi"
-        self.name = "mile"
+    SYMBOL = "mi"
+    NAME = "Miles"
+
 
 class Kilometre(Length):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "km"
-        self.name = "kilometre"
+    SYMBOL = "km"
+    NAME = "Kilometres"
+
 
 #Velocity Classes
 class Velocity(Unit):
-    def __init__(self, value):
-        super().__init__(value)
-        self.kind = "Velocity"
+    KIND = "Velocity"
+    SYMBOL = None
+    NAME = None
 
     def convert(self, output):
         try:
-            metres = self.value * conversiontables.to_m_per_s[self.name]
+            metres = self.value * conversiontables.to_m_per_s[self.NAME]
             return metres * conversiontables.from_m_per_s[output]
         except KeyError:
             return "Not a supported unit!"
 
 class Metres_Per_Second(Velocity):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "m/s"
-        self.name = "metres per second"
+    SYMBOL = "m/s"
+    NAME = "Metres per Second"
+
 
 class Miles_Per_Hour(Velocity):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "mph"
-        self.name = "miles per hour"
+    SYMBOL = "mph"
+    NAME = "Miles per Hour"
+
 
 class Kilometres_Per_Hour(Velocity):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "kmph"
-        self.name = "kilometres per hour"
+    SYMBOL = "kmph"
+    NAME = "Kilometres per Hour"
+
 
 class Feet_Per_Second(Velocity):
-    def __init__(self, value):
-        super().__init__(value)
-        self.symbol = "fps"
-        self.name = "feet per second"
+    SYMBOL = "fps"
+    NAME = "Feet per Second"
 
 
-stringtoclass = {"mph":Miles_Per_Hour,
-                 "kmph":Kilometres_Per_Hour,
-                 "m/s":Metres_Per_Second,
-                 "feet per second":Feet_Per_Second,
-                 "ft":Foot,
-                 "in":Inch,
-                 "m":Metres,
-                 "yd":Yard,
-                 "fur":Furlong,
-                 "mi":Mile,
-                 "km":Kilometre,
-                 "lb":Pounds,
-                 "kg":Kilograms,
-                 "oz":Ounce,
-                 "st":Stone,
-                 "Imperial ton":Imperial_Ton,
-                 "US ton":US_Ton}
+
+stringtoclass = {"Miles per Hour":Miles_Per_Hour,
+                 "Kilometres per Hour":Kilometres_Per_Hour,
+                 "Metres per Second":Metres_Per_Second,
+                 "Feet per Second":Feet_Per_Second,
+                 "Feet":Foot,
+                 "Inches":Inch,
+                 "Metres":Metres,
+                 "Yards":Yard,
+                 "Furlong":Furlong,
+                 "Miles":Mile,
+                 "Kilometres":Kilometre,
+                 "Pounds":Pounds,
+                 "Kilograms":Kilograms,
+                 "Ounces":Ounce,
+                 "Stone":Stone,
+                 "Imperial Tons":Imperial_Ton,
+                 "US Tons":US_Ton}
 # mass = Pounds(25)
 # velocity = Metres_Per_Second(25)
 # length = Furlong(25)
